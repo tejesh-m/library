@@ -1,0 +1,81 @@
+<p>&nbsp;</p>
+<h3 class="card-title mb-2">Add Book</h3>
+<hr/>
+<div class="row mt-5">
+  <div class="col-md-7">
+    <form (ngSubmit)="saveEvent()" [formGroup]="frmBook" autocomplete="off">
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Title:</label>
+        <div class="col-md-8">
+          <input class="form-control" formControlName="tsbktitle" placeholder="Title" type="text"/>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Category:</label>
+        <div class="col-md-8">
+          <select class="form-control" formControlName="tsbkcategorid" type="text">
+            <option value="0">-</option>
+            <option *ngFor="let cateda of catedalist;" [value]="cateda.categoryId">{{cateda.categoryNme}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Image:</label>
+        <div class="col-md-8">
+          <input (change)="uploadImage($event)" class="form-control" formControlName="tsbkimagedataref"
+                 placeholder="Image" type="file"/>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Price:</label>
+        <div class="col-md-8">
+          <input class="form-control" formControlName="tsbkprice" placeholder="Price" type="number"/>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Publisher:</label>
+        <div class="col-md-8">
+          <input class="form-control" formControlName="tsbkpublisher" placeholder="Publisher" type="text"/>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Release Date:</label>
+        <div class="col-md-8">
+          <input [bsConfig]="bsConfig" [outsideClick]="false" bsDatepicker class="form-control"
+                 formControlName="tsbkleasedate" placeholder="Date" readonly="readonly" type="text"/>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Active:</label>
+        <div class="col-md-8">
+          <select class="form-control" formControlName="tsbkactive">
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Content:</label>
+        <div class="col-md-8">
+          <textarea class="form-control" formControlName="tsbkcontent" placeholder="Content" type="text"></textarea>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3"></label>
+        <div *ngIf="loading">
+          <i class="fa fa-sync fa-spin me-1"></i>Please wait...
+        </div>
+        <div class="col-md-8 d-flex justify-content-end">
+          <button *ngIf="!loading" [disabled]="frmBook.invalid" class="btn btn-success">
+            <i class="fa fa-save me-1"></i>Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <img [src]="imageBase64" height="175" width="155">
+  </div>
+</div>
+<p>&nbsp;</p>

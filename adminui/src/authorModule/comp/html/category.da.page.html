@@ -1,0 +1,50 @@
+<p>&nbsp;</p>
+<h3 class="card-title mb-2">Book Categories</h3>
+<hr/>
+<div class="row mt-5">
+  <div class="col-md-6">
+    <form [formGroup]="frmCate" (ngSubmit)="createEvent()" autocomplete="off">
+      <div class="row mt-3">
+        <label class="col-md-3 text-sm-end">Category:</label>
+        <div class="col-md-8">
+          <input type="text" formControlName="txcatename" class="form-control" autocomplete="off"
+                 placeholder="Category"/>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <label class="col-md-3"></label>
+        <div class="col-md-8 d-flex justify-content-end">
+          <div *ngIf="loading">
+            <i class="fa fa-sync fa-spin me-1"></i>Please wait...
+          </div>
+          <button *ngIf="!loading" [disabled]="frmCate.invalid" class="btn btn-success">
+            <i class="fa fa-save me-1"></i>Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-5">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td width="35"><b>S/N</b></td>
+          <td><b>Category</b></td>
+          <td class="105" align="right"><b>Action</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cateda of catedalist; index as i;">
+          <td>{{i + 1}}</td>
+          <td>{{cateda.categoryNme}}</td>
+          <td align="right">
+            <button (click)="deleteDa(cateda.categoryId)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

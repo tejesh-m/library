@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container">
+    <a [routerLink]="['/book/search']" class="navbar-brand">Book Search</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a [routerLink]="['/auth']" class="nav-link"><i class="fa fa-sign-in me-1"></i>Sign In</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/register']" class="nav-link"><i class="fa fa-sign-out me-1"></i>Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <p>&nbsp;</p>
+  <h3 class="card-title mb-2">Book Search Result</h3>
+  <a [routerLink]="['/book/search']"><i class="fa fa-arrow-left me-1"></i>Back</a>
+  <hr/>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <td width="35"><b>S/N</b></td>
+        <td width="105"><b>Image</b></td>
+        <td width="255"><b>Title</b></td>
+        <td width="185"><b>Category</b></td>
+        <td width="65"><b>Price</b></td>
+        <td width="145"><b>Publisher</b></td>
+        <td width="145"><b>Release Date</b></td>
+        <td width="35"><b>Active</b></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bkda of searchdataresult;index as i;">
+        <td>{{i + 1}}</td>
+        <td><img [src]="bkda.bookImage" height="60" width="55" /></td>
+        <td>{{bkda.bookTitle}}</td>
+        <td>{{bkda.bookCategory}}</td>
+        <td>{{bkda.bookPrice}}</td>
+        <td>{{bkda.bookPublisher}}</td>
+        <td>{{bkda.addedDate|date}}</td>
+        <td>{{bkda.bookStatus}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
